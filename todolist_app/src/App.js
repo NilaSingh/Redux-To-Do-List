@@ -1,6 +1,8 @@
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+let idx=0
+
 const Todos = () => {
   const dispatch = useDispatch()
   const todos = useSelector(state => state.todos)
@@ -15,7 +17,7 @@ const Todos = () => {
   }
   return (
     <ul>
-      {todos.map(todo => <li onClick={() => handleClick(todo.id)}>{todo.label}</li>)}
+      {todos.map(todo => <li onClick={() => handleClick(todo.id)}>{todo.label}{todo.id}</li>)}
     </ul>
   )
 }
@@ -27,7 +29,7 @@ const TodoInput = () => {
     type:'ADD_TODO',
     payload:{
       label: newTodo,
-      id:Math.ceil(Math.random() * 100)
+      id:idx++,
     }
   })
   return (
@@ -43,7 +45,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           To Do List:
         </p>
