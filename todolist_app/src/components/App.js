@@ -9,11 +9,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <h1>
           To Do List:
-        </p>
+        </h1>
+        <TodoInput />
+        ______________________________________________________________
         <Todos />
-          <TodoInput />
       </header>
     </div>
   );

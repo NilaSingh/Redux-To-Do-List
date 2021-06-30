@@ -14,10 +14,20 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 todos: state.todos.filter(todo => todo.id !== action.payload),
             }
-        case 'COMPLETED_TODO':
+        case 'COMPLETE_TODO':
             return {
                 ...state,
-            }
+                todos: state.todos.map((todo) => {
+                  if (todo.id !== action.payload) {
+                    return todo
+                  }
+          
+                  return {
+                    ...todo,
+                    status: "Completed",
+                  }
+                })
+              }
         default: 
             return state
     }
